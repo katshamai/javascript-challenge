@@ -33,15 +33,14 @@ function runEnter() {
 
   // Select the input element, property, and get the raw HTML node
   var inputDate = d3.select("#datetime").property("value");
-  var inputCity = d3.select("#city").property("value");
-  var inputState = d3.select("#state").property("value");
-  var inputCountry = d3.select("#country").property("value");
-  var inputShape = d3.select("#shape").property("value");
+  var inputCity = d3.select("#city").property("value").toLowercase();
+  var inputState = d3.select("#state").property("value").toLowercase();
+  var inputCountry = d3.select("#country").property("value").toLowercase();
+  var inputShape = d3.select("#shape").property("value").toLowercase();
 
   console.log(inputDate,inputCity,inputState,inputCountry,inputShape);
-};
 
-  // Use the form input to filter the data by date
+  // Use the form input to filter the data by 5 fields
   filteredData = tableData;
 
   if (inputDate) {
@@ -53,15 +52,15 @@ function runEnter() {
   }
 
   if (inputState) {
-    filteredData = filteredData.filter(sighting => sighting.datetime == inputState);
+    filteredData = filteredData.filter(sighting => sighting.state == inputState);
   }
 
   if (inputCountry) {
-    filteredData = filteredData.filter(sighting => sighting.datetime == inputCountry);
+    filteredData = filteredData.filter(sighting => sighting.country == inputCountry);
   }
 
   if (inputShape) {
-    filteredData = filteredData.filter(sighting => sighting.datetime == inputShape);
+    filteredData = filteredData.filter(sighting => sighting.shape == inputShape);
   }
 
   // Show filtered results only in main table
@@ -79,4 +78,5 @@ function runEnter() {
         cell.text(value);
     });
   });
+};
 };
