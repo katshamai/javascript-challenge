@@ -36,14 +36,14 @@ function runEnter() {
 
   // Get the value property of the input element
   var userInput = inputElement.property("value");
-  console.log(userInput);
+  // console.log(userInput);
 
   // Use the form input to filter the data by date
   var matchingResults = tableData.filter(sighting => sighting.datetime == userInput);
 
   // Show filtered results only in main table
   if (matchingResults.length == 0) {
-      console.log(`No results for date ${userInput}`);
+      // console.log(`No results for date ${userInput}`);
       tbody.html("");
       tbody.text(`There are no results for the date you entered - ${userInput}`);
     } else {
@@ -52,7 +52,7 @@ function runEnter() {
     var row = tbody.append('tr');
 
     Object.entries(report).forEach(([key, value]) => {
-        console.log(key, value);
+        // console.log(key, value);
         var cell = row.append('td');
         cell.text(value);
     });
