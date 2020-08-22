@@ -14,7 +14,6 @@ tableData.forEach((ufoData) => {
   });
 
 // Listen for events and search date column for matches to user input
-
 // Select the filter button
 var button = d3.select("#filter-btn");
 
@@ -36,6 +35,7 @@ function runEnter() {
 
   // Get the value property of the input element
   var userInput = inputElement.property("value");
+  // Check userInput
   // console.log(userInput);
 
   // Use the form input to filter the data by date
@@ -43,6 +43,7 @@ function runEnter() {
 
   // Show filtered results only in main table
   if (matchingResults.length == 0) {
+      // Check where there are 0 matches
       // console.log(`No results for date ${userInput}`);
       tbody.html("");
       tbody.text(`There are no results for the date you entered - ${userInput}`);
@@ -52,6 +53,7 @@ function runEnter() {
     var row = tbody.append('tr');
 
     Object.entries(report).forEach(([key, value]) => {
+      // Check entries
         // console.log(key, value);
         var cell = row.append('td');
         cell.text(value);
