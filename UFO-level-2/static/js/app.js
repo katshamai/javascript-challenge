@@ -33,12 +33,12 @@ function runEnter() {
 
   // Select the input element, property, and get the raw HTML node
   var inputDate = d3.select("#datetime").property("value");
-  var inputCity = d3.select("#city").property("value").toLowercase();
-  var inputState = d3.select("#state").property("value").toLowercase();
-  var inputCountry = d3.select("#country").property("value").toLowercase();
-  var inputShape = d3.select("#shape").property("value").toLowercase();
+  var inputCity = d3.select("#city").property("value").toLowerCase();
+  var inputState = d3.select("#state").property("value").toLowerCase();
+  var inputCountry = d3.select("#country").property("value").toLowerCase();
+  var inputShape = d3.select("#shape").property("value").toLowerCase();
 
-  console.log(inputDate,inputCity,inputState,inputCountry,inputShape);
+  // console.log(inputDate,inputCity,inputState,inputCountry,inputShape);
 
   // Use the form input to filter the data by 5 fields
   filteredData = tableData;
@@ -65,7 +65,7 @@ function runEnter() {
 
   // Show filtered results only in main table
   if (filteredData.length == 0) {
-      console.log(`No results for the parameters you have provided - ${inputDate}, ${inputCity}, ${inputState}, ${inputCountry}, ${inputShape}.`);
+      // console.log(`No results for the parameters you have provided - ${inputDate}, ${inputCity}, ${inputState}, ${inputCountry}, ${inputShape}.`);
       tbody.html("");
       tbody.text(`There are no results for the parameters you have provided - ${inputDate}, ${inputCity}, ${inputState}, ${inputCountry}, ${inputShape}.`);
     } else {
@@ -73,7 +73,7 @@ function runEnter() {
   filteredData.forEach((report) => {
     var row = tbody.append('tr');
     Object.entries(report).forEach(([key, value]) => {
-        console.log(key, value);
+        // console.log(key, value);
         var cell = row.append('td');
         cell.text(value);
     });
