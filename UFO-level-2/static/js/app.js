@@ -43,6 +43,12 @@ function runEnter() {
   if (matchingResults.length == 0) {
     console.log(`No results for date ${userInput}`);
   } else {
-    console.log(matchingResults);
+    matchingResults.forEach((result) => {
+      var row = tbody.append("tr");
+      Object.entries(result).forEach(([key, value]) => {
+        var cell = row.append("td");
+        cell.text(value);
+      });
+    });
     };
 };

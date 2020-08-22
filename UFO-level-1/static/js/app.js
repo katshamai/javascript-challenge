@@ -5,7 +5,7 @@ var tableData = data;
 var tbody = d3.select("tbody");
 console.log("Welcome to UFO data")
 
-data.forEach((ufoData) => {
+tableData.forEach((ufoData) => {
     var row = tbody.append("tr");
     Object.entries(ufoData).forEach(([key, value]) => {
       var cell = row.append("td");
@@ -28,7 +28,7 @@ form.on("submit", runEnter);
 // Complete the event handler function for the form
 function runEnter() {
 
-  // Prevent the page from refreshing
+  // // Prevent the page from refreshing
   d3.event.preventDefault();
 
   // Select the input element and get the raw HTML node
@@ -39,10 +39,23 @@ function runEnter() {
   console.log(userInput);
 
   // Use the form input to filter the data by date
-  var matchingResults = data.filter(sighting => sighting.datetime == userInput);
+  var matchingResults = tableData.filter(sighting => sighting.datetime == userInput);
+
+  // Show filtered results only in main table
   if (matchingResults.length == 0) {
-    console.log(`No results for date ${userInput}`);
-  } else {
-    console.log(matchingResults);
-    };
+      console.log(`No results for date ${userInput}`);
+      tbody.html("");
+      tbody.text(`There are no results for the date you entered - ${userInput}`);
+    } else {
+  tbody.html("");
+  matchingResults.forEach((report) => {
+    var row = tbody.append('tr');
+
+    Object.entries(report).forEach(([key, value]) => {
+        console.log(key, value);
+        var cell = row.append('td');
+        cell.text(value);
+    });
+  });
+}; 
 };
