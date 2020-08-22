@@ -64,20 +64,19 @@ function runEnter() {
     filteredData = filteredData.filter(sighting => sighting.datetime == inputShape);
   }
 
-//   // Show filtered results only in main table
-//   if (matchingResults.length == 0) {
-//       console.log(`No results for date ${userInput}`);
-//       tbody.html("");
-//       tbody.text(`There are no results for the date you entered - ${userInput}`);
-//     } else {
-//   tbody.html("");
-//   matchingResults.forEach((report) => {
-//     var row = tbody.append('tr');
-
-//     Object.entries(report).forEach(([key, value]) => {
-//         console.log(key, value);
-//         var cell = row.append('td');
-//         cell.text(value);
-//     });
-//   });
-// }; 
+  // Show filtered results only in main table
+  if (filteredData.length == 0) {
+      console.log(`No results for the parameters you have provided - ${inputDate}, ${inputCity}, ${inputState}, ${inputCountry}, ${inputShape}.`);
+      tbody.html("");
+      tbody.text(`There are no results for the parameters you have provided - ${inputDate}, ${inputCity}, ${inputState}, ${inputCountry}, ${inputShape}.`);
+    } else {
+  tbody.html("");
+  filteredData.forEach((report) => {
+    var row = tbody.append('tr');
+    Object.entries(report).forEach(([key, value]) => {
+        console.log(key, value);
+        var cell = row.append('td');
+        cell.text(value);
+    });
+  });
+};
